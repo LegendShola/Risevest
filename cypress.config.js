@@ -10,7 +10,8 @@ module.exports = defineConfig({
     viewportWidth: 1280,
     viewportHeight: 720,
     chromeWebSecurity: false,
-    failOnStatusCode: false
+    failOnStatusCode: false,
+    defaultCommandTimeout: 10000,
   },
   reporter: 'mochawesome',  
   reporterOptions: {

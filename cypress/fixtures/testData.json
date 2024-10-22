@@ -1,8 +1,54 @@
 {
+
+  "planNames" : ["GrowthMaster", "SuccessPath", "VisionQuest", "GoalAchieve", "DreamBuilder", "FutureFocus", "MilestoneMap", "ActionStrategy", "AspireRise", "ProgressJourney"],
+  "amounts" : ["500000", "1000", "190999342", "27431663", "5320098", "700000", "500", "125000", "9200000", "675000", "34823", "2500000", "87310", "50000", "99999999"],
+
   "validEmail": "shola.mich.7438@gmail.com",
   "wrongEmail": "xyz@rise.com",
   "invalidEmail": "xyz@risecom",
   "password": "@Legend7438",
   "invalidPassword": "xyz@rise.Com",
-  "empty": ""
+  "empty": "",
+  "pastDate": "23-03-2023",
+  "futureDates": [
+    "22-10-2024",
+    "15-11-2024",
+    "30-12-2024",
+    "05-01-2025",
+    "12-02-2025",
+    "25-03-2025",
+    "08-04-2025",
+    "17-05-2025",
+    "29-06-2025",
+    "14-07-2025",
+    "23-08-2025",
+    "11-09-2025",
+    "06-10-2025",
+    "19-11-2025",
+    "01-12-2025",
+    "22-01-2026",
+    "15-02-2026",
+    "30-03-2026",
+    "05-04-2026",
+    "12-05-2026"
+  ],
+
+  "realEstateTenor": [
+    { "months": "12", "expectedPercentage": "15" },
+    { "months": "6", "expectedPercentage": "7.5" },
+    { "months": "3", "expectedPercentage": "3.75" }
+  ],
+
+  "fixedIncomeTenor": [
+    { "months": "12", "expectedPercentage": "10" },
+    { "months": "6", "expectedPercentage": "5" },
+    { "months": "3", "expectedPercentage": "2.5" }
+  ],
+
+  "investmentOptions": [
+    "//span[contains(., 'Capital Growth')]",
+    "//span[contains(., 'Stability')]",
+    "//span[contains(., 'Safety')]"
+  ]
+
 }

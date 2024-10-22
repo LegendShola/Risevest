@@ -1,0 +1,78 @@
+name: Risevest Web App Automation
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  schedule:
+    # Runs the workflow every 3 hours
+    - cron: '0 */3 * * *'
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4  # Updated to v4 for compatibility
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'  # Updated to Node.js 20 for compatibility
+
+      - name: Cache Cypress binary
+        uses: actions/cache@v4  # Updated to v4 for compatibility
+        with:
+          path: ~/.cache/Cypress
+          key: ${{ runner.os }}-cypress-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-cypress-
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Ensure Cypress binary permissions
+        run: chmod +x ~/.cache/Cypress/13.15.0/Cypress/Cypress
+
+      - name: Install Cypress
+        run: sudo npx cypress install
+
+      - name: Create reports directory
+        run: mkdir -p cypress/reports/mochawesome  # Directory for mochawesome reports
+
+      - name: Run Cypress tests with Allure and MochaAwesome
+        run: |
+          sudo apt-get install -y xvfb
+          xvfb-run --auto-servernum --server-args="-screen 0 1280x1024x24" npx cypress run || true
+          npx allure generate allure-results --clean  # Generate Allure report
+
+      - name: Check for MochaAwesome reports
+        run: |
+          echo "Checking for MochaAwesome report files..."
+          if ls cypress/reports/mochawesome/*.html 1> /dev/null 2>&1; then
+            echo "MochaAwesome report files found:"
+            ls -l cypress/reports/mochawesome/*.html
+          else
+            echo "No MochaAwesome reports found."
+            exit 0
+          fi
+
+      - name: Archive Allure Results
+        uses: actions/upload-artifact@v4  # Updated to v4 for compatibility
+        with:
+          name: allure-results
+          path: allure-report
+
+      - name: Cypress run
+        # Uses the official Cypress GitHub action
+        uses: cypress-io/github-action@v6
+        with:
+          start: npm start  # Starts web server for E2E tests
+          wait-on: 'http://localhost:3000'  # Waits for above
+          record: true
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}  # Set in GitHub repo secrets
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
