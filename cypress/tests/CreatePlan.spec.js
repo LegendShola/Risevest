@@ -26,6 +26,18 @@ describe('Create plan', () => {
         viewPlans.clickPlansButton();
     });
 
+    // Test case for creating a new investment plan
+    it('Verify user is able to create a new investment plan', () => {
+        const name = createPlan.generatePlanName();
+        const amount = createPlan.generateRandomAmount();
+        const percent = createPlan.getRandomPercentage(); // Generate random percentage
+        const age = createPlan.getRandomRetirementAge(); // Generate random retirement age
+               
+        createPlan.investmentPlan(name, amount, percent, age);
+        createPlan.assertSuccess(); // Assert success message
+        createPlan.deletePlans(); // Clean up by deleting created plans
+    });
+
     // Test case for creating a business USD plan
     it('Verify user is able to create a business USD plan successfully', () => {
         const name = createPlan.generatePlanName(); // Generate a random plan name
@@ -119,26 +131,15 @@ describe('Create plan', () => {
         createPlan.assertDateFailure(); // Assert failure due to past date
     });
 
-    // Test case for creating a plan with a null date
-    it('Verify user is unable to create plan with a null date', () => {
+    // Test case for creating a plan with an invalid date
+    it('Verify user is unable to create plan with a invalid date', () => {
         const name = createPlan.generatePlanName();
         const amount = createPlan.generateRandomAmount();
-        const date = "DD-MM-YYYY"; // Invalid date format
+        const date = "23-04-0000"; // Invalid date format
         
         createPlan.nairaBusinessPlan(name, amount, date);
         createPlan.assertDateFailure(); // Assert failure due to invalid date
     });
 
-    // Test case for creating a new investment plan
-    it('Verify user is able to create a new investment plan', () => {
-        const name = createPlan.generatePlanName();
-        const amount = createPlan.generateRandomAmount();
-        const percent = createPlan.getRandomPercentage(); // Generate random percentage
-        const age = createPlan.getRandomRetirementAge(); // Generate random retirement age
-               
-        createPlan.investmentPlan(name, amount, percent, age);
-        createPlan.assertSuccess(); // Assert success message
-        createPlan.deletePlans(); // Clean up by deleting created plans
-    });
 
 });
