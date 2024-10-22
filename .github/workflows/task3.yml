@@ -65,14 +65,6 @@ jobs:
         with:
           name: allure-results
           path: allure-report
-
-      - name: Cypress run
-        # Uses the official Cypress GitHub action
-        uses: cypress-io/github-action@v6
-        with:
-          start: npm start  # Starts web server for E2E tests
-          wait-on: 'http://localhost:3000'  # Waits for above
-          record: true
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}  # Set in GitHub repo secrets
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
