@@ -1,0 +1,8 @@
+{
+  "validEmail": "shola.mich.7438@gmail.com",
+  "wrongEmail": "xyz@rise.com",
+  "invalidEmail": "xyz@risecom",
+  "password": "@Legend7438",
+  "invalidPassword": "xyz@rise.Com",
+  "empty": ""
+}
