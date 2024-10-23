@@ -107,6 +107,7 @@ class createPlanPage {
         cy.wait(2000);
         this.elements.continueButton().click(); // Continue to the next step
         this.elements.retirementAgeField().click().type(age); // Enter the retirement age
+        cy.wait(2000); // Wait for
         this.elements.continueButton().first().click(); // Continue to the next step
         this.selectRandomRadioOption(); // Select a random investment option
         this.elements.continueButton().first().click(); // Continue to the next step
@@ -134,7 +135,8 @@ class createPlanPage {
         this.elements.businessPlanButton().click(); // Navigate to business plan
         this.elements.continueButton().first().click(); // Continue to the next step
         this.elements.planName().type(name); // Enter the plan name
-        this.elements.continueButton().first().click(); // Continue to the next step
+        cy.wait(2000); // Wait for
+        this.elements.continueButton().click(); // Continue to the next step
         this.elements.nairaCurrency().click(); // Select Naira currency
         this.elements.amount().type(amount); // Enter the investment amount
         cy.wait(2000); // Wait for
