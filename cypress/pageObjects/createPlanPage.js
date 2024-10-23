@@ -61,7 +61,7 @@ class createPlanPage {
         const randomIndex = Math.floor(Math.random() * radioOptions.length);
         // Click the randomly selected radio option
         cy.xpath(radioOptions[randomIndex]).click();
-        this.elements.continueButton().click();
+        this.elements.continueButton().first().click();
         cy.wait(2000);
     }
 
@@ -131,7 +131,7 @@ class createPlanPage {
         this.elements.businessPlanButton().click(); // Navigate to business plan
         this.elements.continueButton().click(); // Continue to the next step
         this.elements.planName().type(name); // Enter the plan name
-        this.elements.continueButton().click(); // Continue to the next step
+        this.elements.continueButton().first().click(); // Continue to the next step
         this.elements.nairaCurrency().click(); // Select Naira currency
         this.elements.amount().type(amount); // Enter the investment amount
         this.elements.continueButton().click(); // Continue to the next step
@@ -221,7 +221,7 @@ class createPlanPage {
         this.elements.plansButton().click(); // Navigate to the plans page
         this.elements.seeAllPlans().click(); // See all plans
         cy.wait(3000); // Wait for any necessary loading
-        cy.get('a._bigPlanCard_1rcc3_24._planCard_1rcc3_1.bg-primary.text-white').then($cards => {
+        cy.get('a._bigPlanCard_1rcc3_24._planCard_1rcc3_1.bg-primary.text-white', { timeout: 15000 }).then($cards => {
             if ($cards.length > 0) {
                 cy.wrap($cards[0]).within(() => {
                     cy.get('p').first().invoke('text').then((planName) => {
