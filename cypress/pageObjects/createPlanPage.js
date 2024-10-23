@@ -104,7 +104,8 @@ class createPlanPage {
         this.elements.amount().type(amount); // Enter the investment amount
         this.elements.continueButton().first().click(); // Continue to the next step
         this.elements.percentInput().type(percent); // Enter the percentage
-        this.elements.continueButton().first().click(); // Continue to the next step
+        cy.wait(2000);
+        this.elements.continueButton().click(); // Continue to the next step
         this.elements.retirementAgeField().click().type(age); // Enter the retirement age
         this.elements.continueButton().first().click(); // Continue to the next step
         this.selectRandomRadioOption(); // Select a random investment option
@@ -118,6 +119,7 @@ class createPlanPage {
         this.elements.businessPlanButton().click(); // Navigate to business plan
         this.elements.continueButton().first().click(); // Continue to the next step
         this.elements.planName().type(name); // Enter the plan name
+        cy.wait(2000);
         this.elements.continueButton().click(); // Continue to the next step
         this.elements.USDCurrency().click(); // Select USD currency
         this.elements.amount().type(amount); // Enter the investment amount
@@ -135,7 +137,8 @@ class createPlanPage {
         this.elements.continueButton().first().click(); // Continue to the next step
         this.elements.nairaCurrency().click(); // Select Naira currency
         this.elements.amount().type(amount); // Enter the investment amount
-        this.elements.continueButton().first().click(); // Continue to the next step
+        cy.wait(2000); // Wait for
+        this.elements.continueButton().click(); // Continue to the next step
         this.elements.startDate().type(date); // Enter the start date
         this.elements.continueButton().first().click(); // Continue to the next step
         this.elements.agreeAndContinue().click(); // Agree and continue to create the plan
@@ -150,7 +153,8 @@ class createPlanPage {
         this.elements.continueButton().first().click(); // Continue to the next step
         this.elements.USDCurrency().click(); // Select USD currency
         this.elements.amount().type(amount); // Enter the investment amount
-        this.elements.continueButton().first().click(); // Continue to the next step
+        cy.wait(2000); // Wait for
+        this.elements.continueButton().click(); // Continue to the next step
         this.elements.startDate().type(date); // Enter the start date
         this.elements.continueButton().first().click(); // Continue to the next step
         this.elements.agreeAndContinue().click(); // Agree and continue to create the plan
