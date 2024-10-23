@@ -1,0 +1,224 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2024-10-23T20:39:15.120Z",
+    "end": "2024-10-23T20:40:15.462Z",
+    "duration": 60342,
+    "testsRegistered": 7,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 6,
+    "hasSkipped": true
+  },
+  "results": [
+    {
+      "uuid": "19ffeb64-f160-4b4d-ba0a-d98fbaa8ac76",
+      "title": "",
+      "fullFile": "cypress\\tests\\Signin.spec.js",
+      "file": "cypress\\tests\\Signin.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "6b40e01a-dcef-4c48-a2e4-57c60240b2b3",
+          "title": "User sign in process",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Verify user is able to sign in successfully",
+              "fullTitle": "User sign in process Verify user is able to sign in successfully",
+              "timedOut": null,
+              "duration": 60212,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "const email = data.validEmail; // Get valid email from test data\nconst password = data.password; // Get valid password from test data\nsignIn.signIn(email, password); // Perform sign-in action\nsignIn.assertSuccess(); // Assert successful sign-in",
+              "err": {
+                "message": "CypressError: Timed out after waiting `60000ms` for your remote page to load.\n\nYour page did not fire its `load` event within `60000ms`.\n\nYou can try increasing the `pageLoadTimeout` value in `cypress.config.js` to wait longer.\n\nBrowsers will not fire the `load` event until all stylesheets and scripts are done downloading.\n\nWhen this `load` event occurs, Cypress will continue running commands.\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `User sign in process`",
+                "estack": "CypressError: Timed out after waiting `60000ms` for your remote page to load.\n\nYour page did not fire its `load` event within `60000ms`.\n\nYou can try increasing the `pageLoadTimeout` value in `cypress.config.js` to wait longer.\n\nBrowsers will not fire the `load` event until all stylesheets and scripts are done downloading.\n\nWhen this `load` event occurs, Cypress will continue running commands.\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `User sign in process`\n    at timedOutWaitingForPageLoad (https://app.risevest.com/__cypress/runner/cypress_runner.js:130682:64)\n    at <unknown> (https://app.risevest.com/__cypress/runner/cypress_runner.js:131667:16)\n    at tryCatcher (https://app.risevest.com/__cypress/runner/cypress_runner.js:1807:23)\n    at <unknown> (https://app.risevest.com/__cypress/runner/cypress_runner.js:4186:41)\n    at tryCatcher (https://app.risevest.com/__cypress/runner/cypress_runner.js:1807:23)\n    at Promise._settlePromiseFromHandler (https://app.risevest.com/__cypress/runner/cypress_runner.js:1519:31)\n    at Promise._settlePromise (https://app.risevest.com/__cypress/runner/cypress_runner.js:1576:18)\n    at Promise._settlePromise0 (https://app.risevest.com/__cypress/runner/cypress_runner.js:1621:10)\n    at Promise._settlePromises (https://app.risevest.com/__cypress/runner/cypress_runner.js:1697:18)\n    at _drainQueueStep (https://app.risevest.com/__cypress/runner/cypress_runner.js:2407:12)\n    at _drainQueue (https://app.risevest.com/__cypress/runner/cypress_runner.js:2400:9)\n    at Async._drainQueues (https://app.risevest.com/__cypress/runner/cypress_runner.js:2416:5)\n    at Async.drainQueues (https://app.risevest.com/__cypress/runner/cypress_runner.js:2286:14)\nFrom Your Spec Code:\n    at Context.eval (webpack://risevest/./cypress/tests/Signin.spec.js:13:11)",
+                "diff": null
+              },
+              "uuid": "be4a0e77-91b9-46be-9448-239894f13803",
+              "parentUUID": "6b40e01a-dcef-4c48-a2e4-57c60240b2b3",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Verify user is unable to sign in with a wrong email address",
+              "fullTitle": "User sign in process Verify user is unable to sign in with a wrong email address",
+              "timedOut": null,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const email = data.wrongEmail; // Get wrong email from test data\nconst password = data.password; // Get valid password from test data\nsignIn.signIn(email, password); // Perform sign-in action\nsignIn.assertFailure(); // Assert failure due to wrong email",
+              "err": {},
+              "uuid": "4778ea9a-ac21-492c-a3fe-6bc566b12ea9",
+              "parentUUID": "6b40e01a-dcef-4c48-a2e4-57c60240b2b3",
+              "isHook": false,
+              "skipped": true
+            },
+            {
+              "title": "Verify user is unable to sign in with an invalid email address",
+              "fullTitle": "User sign in process Verify user is unable to sign in with an invalid email address",
+              "timedOut": null,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const email = data.invalidEmail; // Get invalid email from test data\nconst password = data.password; // Get valid password from test data\nsignIn.signIn(email, password); // Perform sign-in action\nsignIn.assertInvalidEmail(); // Assert failure due to invalid email format",
+              "err": {},
+              "uuid": "32634f8b-56db-475b-a7ac-81d38e481567",
+              "parentUUID": "6b40e01a-dcef-4c48-a2e4-57c60240b2b3",
+              "isHook": false,
+              "skipped": true
+            },
+            {
+              "title": "Verify user is unable to sign in with invalid password",
+              "fullTitle": "User sign in process Verify user is unable to sign in with invalid password",
+              "timedOut": null,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const email = data.validEmail; // Get valid email from test data\nconst password = data.invalidPassword; // Get invalid password from test data\nsignIn.signIn(email, password); // Perform sign-in action\nsignIn.assertFailure(); // Assert failure due to invalid password",
+              "err": {},
+              "uuid": "8f2d5b4b-1582-4df1-9401-d76f3f9d661a",
+              "parentUUID": "6b40e01a-dcef-4c48-a2e4-57c60240b2b3",
+              "isHook": false,
+              "skipped": true
+            },
+            {
+              "title": "Verify user is unable to sign in with an empty password field",
+              "fullTitle": "User sign in process Verify user is unable to sign in with an empty password field",
+              "timedOut": null,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const email = data.validEmail; // Get valid email from test data\nconst password = data.invalidPassword; // Get any password to clear later\nsignIn.signInEmptyPassword(email, password); // Perform sign-in with empty password\nsignIn.assertEmptyPassword(); // Assert failure due to empty password",
+              "err": {},
+              "uuid": "473655e0-754d-43e2-b657-1a6a0362f99e",
+              "parentUUID": "6b40e01a-dcef-4c48-a2e4-57c60240b2b3",
+              "isHook": false,
+              "skipped": true
+            },
+            {
+              "title": "Verify user is unable to sign in with an empty email field",
+              "fullTitle": "User sign in process Verify user is unable to sign in with an empty email field",
+              "timedOut": null,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const email = data.validEmail; // Get any email to clear later\nconst password = data.password; // Get valid password from test data\nsignIn.signInEmptyEmail(email, password); // Perform sign-in with empty email\nsignIn.assertEmptyEmail(); // Assert failure due to empty email",
+              "err": {},
+              "uuid": "7b3304f4-3caf-4553-8a94-496d15eb7eed",
+              "parentUUID": "6b40e01a-dcef-4c48-a2e4-57c60240b2b3",
+              "isHook": false,
+              "skipped": true
+            },
+            {
+              "title": "Verify user is unable to sign in with an empty email and password field",
+              "fullTitle": "User sign in process Verify user is unable to sign in with an empty email and password field",
+              "timedOut": null,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const email = data.validEmail; // Get any email to clear later\nconst password = data.password; // Get valid password from test data\nsignIn.signInEmptyEmailAndPassword(email, password); // Perform sign-in with both fields empty\nsignIn.assertEmptyEmail(); // Assert failure due to empty email\nsignIn.assertEmptyPassword(); // Assert failure due to empty password",
+              "err": {},
+              "uuid": "592d4d14-38f8-40cc-a56c-adbb957bdc3c",
+              "parentUUID": "6b40e01a-dcef-4c48-a2e4-57c60240b2b3",
+              "isHook": false,
+              "skipped": true
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "be4a0e77-91b9-46be-9448-239894f13803"
+          ],
+          "pending": [],
+          "skipped": [
+            "4778ea9a-ac21-492c-a3fe-6bc566b12ea9",
+            "32634f8b-56db-475b-a7ac-81d38e481567",
+            "8f2d5b4b-1582-4df1-9401-d76f3f9d661a",
+            "473655e0-754d-43e2-b657-1a6a0362f99e",
+            "7b3304f4-3caf-4553-8a94-496d15eb7eed",
+            "592d4d14-38f8-40cc-a56c-adbb957bdc3c"
+          ],
+          "duration": 60212,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports/mochawesome",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
