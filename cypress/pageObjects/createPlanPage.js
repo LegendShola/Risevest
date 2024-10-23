@@ -110,7 +110,7 @@ class createPlanPage {
         this.elements.continueButton().click(); // Continue to the next step
         this.elements.retirementAgeField().click().type(age); // Enter the retirement age
         cy.wait(2000); // Wait for
-        this.elements.continueButton().first().click(); // Continue to the next step
+        this.elements.continueButton().click(); // Continue to the next step
         this.selectRandomRadioOption(); // Select a random investment option
         cy.wait(2000); // Wait for
         this.elements.continueButton().click(); // Continue to the next step
@@ -158,15 +158,17 @@ class createPlanPage {
     usdSchoolPlan(name, amount, date) {
         this.elements.schoolPlanButton().click(); // Navigate to school plan
         cy.wait(3000); // Wait for any necessary loading
-        this.elements.continueButton().first().click(); // Continue to the next step
+        this.elements.continueButton().click(); // Continue to the next step
         this.elements.planName().type(name); // Enter the plan name
-        this.elements.continueButton().first().click(); // Continue to the next step
+        cy.wait(3000); // Wait for any necessary loading
+        this.elements.continueButton().click(); // Continue to the next step
         this.elements.USDCurrency().click(); // Select USD currency
         this.elements.amount().type(amount); // Enter the investment amount
         cy.wait(2000); // Wait for
         this.elements.continueButton().click(); // Continue to the next step
         this.elements.startDate().type(date); // Enter the start date
-        this.elements.continueButton().first().click(); // Continue to the next step
+        cy.wait(2000); // Wait for
+        this.elements.continueButton().click(); // Continue to the next step
         this.elements.agreeAndContinue().click(); // Agree and continue to create the plan
     }
 
