@@ -61,6 +61,7 @@ class createPlanPage {
         const randomIndex = Math.floor(Math.random() * radioOptions.length);
         // Click the randomly selected radio option
         cy.xpath(radioOptions[randomIndex]).click();
+        cy.wait(2000);
         this.elements.continueButton().click();
         cy.wait(2000);
     }
