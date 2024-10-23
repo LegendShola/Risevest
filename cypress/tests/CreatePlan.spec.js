@@ -26,18 +26,6 @@ describe('Create plan', () => {
         viewPlans.clickPlansButton();
     });
 
-    // Test case for creating a new investment plan
-    it('Verify user is able to create a new investment plan', () => {
-        const name = createPlan.generatePlanName();
-        const amount = createPlan.generateRandomAmount();
-        const percent = createPlan.getRandomPercentage(); // Generate random percentage
-        const age = createPlan.getRandomRetirementAge(); // Generate random retirement age
-               
-        createPlan.investmentPlan(name, amount, percent, age);
-        createPlan.assertSuccess(); // Assert success message
-        createPlan.deletePlans(); // Clean up by deleting created plans
-    });
-
     // Test case for creating a business USD plan
     it('Verify user is able to create a business USD plan successfully', () => {
         const name = createPlan.generatePlanName(); // Generate a random plan name
@@ -61,6 +49,18 @@ describe('Create plan', () => {
         createPlan.nairaBusinessPlan(name, amount, date);
         createPlan.assertSuccess();
         createPlan.deletePlans();
+    });
+
+    // Test case for creating a new investment plan
+    it('Verify user is able to create a new investment plan', () => {
+        const name = createPlan.generatePlanName();
+        const amount = createPlan.generateRandomAmount();
+        const percent = createPlan.getRandomPercentage(); // Generate random percentage
+        const age = createPlan.getRandomRetirementAge(); // Generate random retirement age
+               
+        createPlan.investmentPlan(name, amount, percent, age);
+        createPlan.assertSuccess(); // Assert success message
+        createPlan.deletePlans(); // Clean up by deleting created plans
     });
 
     // Test case for creating a school Naira plan
