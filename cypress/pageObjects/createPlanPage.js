@@ -100,9 +100,11 @@ class createPlanPage {
         this.elements.startInvestingButton().click(); // Start the investing process
         this.selectRandomCurrency(); // Select a random currency
         this.elements.planName().type(name); // Enter the plan name
-        this.elements.continueButton().first().click(); // Continue to the next step
+        cy.wait(2000); // Wait for
+        this.elements.continueButton().click(); // Continue to the next step
         this.elements.amount().type(amount); // Enter the investment amount
-        this.elements.continueButton().first().click(); // Continue to the next step
+        cy.wait(2000); // Wait for
+        this.elements.continueButton().click(); // Continue to the next step
         this.elements.percentInput().type(percent); // Enter the percentage
         cy.wait(2000);
         this.elements.continueButton().click(); // Continue to the next step
@@ -110,7 +112,8 @@ class createPlanPage {
         cy.wait(2000); // Wait for
         this.elements.continueButton().first().click(); // Continue to the next step
         this.selectRandomRadioOption(); // Select a random investment option
-        this.elements.continueButton().first().click(); // Continue to the next step
+        cy.wait(2000); // Wait for
+        this.elements.continueButton().click(); // Continue to the next step
         this.elements.agreeNdContinue().click(); // Agree and continue to the next step
         this.elements.createPlanBtn().click(); // Click to create the plan
     }
@@ -118,22 +121,26 @@ class createPlanPage {
     // Method to create a USD business plan
     usdBusinessPlan(name, amount, date) {
         this.elements.businessPlanButton().click(); // Navigate to business plan
-        this.elements.continueButton().first().click(); // Continue to the next step
+        cy.wait(2000); // Wait for
+        this.elements.continueButton().click(); // Continue to the next step
         this.elements.planName().type(name); // Enter the plan name
         cy.wait(2000);
         this.elements.continueButton().click(); // Continue to the next step
         this.elements.USDCurrency().click(); // Select USD currency
         this.elements.amount().type(amount); // Enter the investment amount
-        this.elements.continueButton().first().click(); // Continue to the next step
+        cy.wait(2000); // Wait for
+        this.elements.continueButton().click(); // Continue to the next step
         this.elements.startDate().type(date); // Enter the start date
-        this.elements.continueButton().first().click(); // Continue to the next step
+        cy.wait(2000); // Wait for
+        this.elements.continueButton().click(); // Continue to the next step
         this.elements.agreeAndContinue().click(); // Agree and continue to create the plan
     }
 
     // Method to create a Naira business plan
     nairaBusinessPlan(name, amount, date) {
         this.elements.businessPlanButton().click(); // Navigate to business plan
-        this.elements.continueButton().first().click(); // Continue to the next step
+        cy.wait(2000); // Wait for
+        this.elements.continueButton().click(); // Continue to the next step
         this.elements.planName().type(name); // Enter the plan name
         cy.wait(2000); // Wait for
         this.elements.continueButton().click(); // Continue to the next step
@@ -142,7 +149,8 @@ class createPlanPage {
         cy.wait(2000); // Wait for
         this.elements.continueButton().click(); // Continue to the next step
         this.elements.startDate().type(date); // Enter the start date
-        this.elements.continueButton().first().click(); // Continue to the next step
+        cy.wait(2000); // Wait for
+        this.elements.continueButton().click(); // Continue to the next step
         this.elements.agreeAndContinue().click(); // Agree and continue to create the plan
     }
 
@@ -166,15 +174,19 @@ class createPlanPage {
     nairaSchoolPlan(name, amount, date) {
         this.elements.schoolPlanButton().click(); // Navigate to school plan
         cy.wait(3000); // Wait for any necessary loading
-        this.elements.continueButton().first().click(); // Continue to the next step
+        this.elements.continueButton().click(); // Continue to the next step
         this.elements.planName().type(name); // Enter the plan name
-        this.elements.continueButton().first().click(); // Continue to the next step
+        cy.wait(2000); // Wait for
+        this.elements.continueButton().click(); // Continue to the next step
         this.elements.nairaCurrency().click(); // Select Naira currency
-        this.elements.continueButton().first().click(); // Continue to the next step
+        cy.wait(2000); // Wait for
+        this.elements.continueButton().click(); // Continue to the next step
         this.elements.amount().type(amount); // Enter the investment amount
-        this.elements.continueButton().first().click(); // Continue to the next step
+        cy.wait(2000); // Wait for
+        this.elements.continueButton().click(); // Continue to the next step
         this.elements.startDate().type(date); // Enter the start date
-        this.elements.continueButton().first().click(); // Continue to the next step
+        cy.wait(2000); // Wait for
+        this.elements.continueButton().click(); // Continue to the next step
         this.elements.agreeAndContinue().click(); // Agree and continue to create the plan
     }
 
@@ -184,7 +196,8 @@ class createPlanPage {
         cy.wait(3000); // Wait for any necessary loading
         this.elements.getStartedButton().click(); // Start the process
         this.elements.planName().type(name); // Enter the plan name
-        this.elements.continueButton().first().click(); // Continue to the next step        
+        cy.wait(2000); // Wait for
+        this.elements.continueButton().click(); // Continue to the next step        
     }
 
     // Method to click on a specific month option (3, 6, or 12)
@@ -211,7 +224,8 @@ class createPlanPage {
         cy.wait(3000); // Wait for any necessary loading
         this.elements.getStartedButton().click(); // Start the process
         this.elements.planName().type(name); // Enter the plan name
-        this.elements.continueButton().first().click(); // Continue to the next step        
+        cy.wait(2000); // Wait for
+        this.elements.continueButton().click(); // Continue to the next step        
     }
 
     // Full method to integrate the entire flow for fixed income plan
