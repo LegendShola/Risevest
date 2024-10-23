@@ -61,7 +61,7 @@ class createPlanPage {
         const randomIndex = Math.floor(Math.random() * radioOptions.length);
         // Click the randomly selected radio option
         cy.xpath(radioOptions[randomIndex]).click();
-        this.elements.continueButton().first().click();
+        this.elements.continueButton().click();
         cy.wait(2000);
     }
 
@@ -117,7 +117,7 @@ class createPlanPage {
         this.elements.businessPlanButton().click(); // Navigate to business plan
         this.elements.continueButton().first().click(); // Continue to the next step
         this.elements.planName().type(name); // Enter the plan name
-        this.elements.continueButton().first().click(); // Continue to the next step
+        this.elements.continueButton().click(); // Continue to the next step
         this.elements.USDCurrency().click(); // Select USD currency
         this.elements.amount().type(amount); // Enter the investment amount
         this.elements.continueButton().first().click(); // Continue to the next step
