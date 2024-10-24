@@ -1,0 +1,109 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2024-10-24T09:17:09.997Z",
+    "end": "2024-10-24T09:17:57.973Z",
+    "duration": 47976,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "3e4a66ce-9ccd-439d-b97a-df492b3db17d",
+      "title": "",
+      "fullFile": "cypress\\tests\\ViewPlans.spec.js",
+      "file": "cypress\\tests\\ViewPlans.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "6ee36dc9-2095-43d9-885e-3bba2c127c67",
+          "title": "View plans",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Verify user is able to view plans",
+              "fullTitle": "View plans Verify user is able to view plans",
+              "timedOut": null,
+              "duration": 45881,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "// Click on the plans button to navigate to the plans page\nviewPlans.clickPlansButton();\n// Assert that plans are displayed successfully\nviewPlans.assertPlans();",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 12000ms: Expected to find element: `[href=\"/plans\"]`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 12000ms: Expected to find element: `[href=\"/plans\"]`, but never found it.\n    at Object.plansButton (webpack://risevest/./cypress/pageObjects/viewPlansPage.js:5:30)\n    at viewPlansPage.clickPlansButton (webpack://risevest/./cypress/pageObjects/viewPlansPage.js:10:22)\n    at Context.eval (webpack://risevest/./cypress/tests/ViewPlans.spec.js:28:18)",
+                "diff": null
+              },
+              "uuid": "e0d39a67-974e-45d9-8e28-d1bb8f6c2bf1",
+              "parentUUID": "6ee36dc9-2095-43d9-885e-3bba2c127c67",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "e0d39a67-974e-45d9-8e28-d1bb8f6c2bf1"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 45881,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports/mochawesome",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

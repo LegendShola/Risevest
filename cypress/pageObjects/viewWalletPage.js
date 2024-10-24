@@ -13,7 +13,7 @@ class viewWalletPage {
   
     // Method to navigate to the wallet section
     openWallet() {
-        this.elements.walletButton().click(); // Click the wallet button to open the wallet page
+        this.elements.walletButton().click({force:true}); // Click the wallet button to open the wallet page
     }
 
     // Assertion to verify that the user is on the wallet page and has a balance of $0.00

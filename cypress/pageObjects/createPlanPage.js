@@ -113,7 +113,7 @@ class createPlanPage {
 
     // Method to create a USD business plan
     usdBusinessPlan(name, amount, date) {
-        this.elements.businessPlanButton().click(); // Navigate to business plan
+        this.elements.businessPlanButton().click({force : true}); // Navigate to business plan
         cy.clickContinue(); // Continue to the next step
         this.elements.planName().type(name); // Enter the plan name
         cy.clickContinue(); // Continue to the next step
