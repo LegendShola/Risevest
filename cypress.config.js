@@ -1,5 +1,6 @@
 const { defineConfig } = require("cypress");
-const allureWriter = require('@shelex/cypress-allure-plugin/writer')
+const allureWriter = require('@shelex/cypress-allure-plugin/writer');
+const mochawesome = require('mochawesome');
 
 module.exports = defineConfig({
   e2e: {
@@ -9,13 +10,11 @@ module.exports = defineConfig({
 
       on('before:browser:launch', (browser = {}, launchOptions) => {
         if (browser.name === 'chrome' || browser.name === 'edge') {
-          // For Chrome and Edge, disable web security
           launchOptions.args.push('--disable-web-security');
-          launchOptions.args.push('--allow-insecure-localhost'); // Optional, for localhost testing
+          launchOptions.args.push('--allow-insecure-localhost');
         }
 
         if (browser.name === 'firefox') {
-          // For Firefox, disable web security by setting appropriate preferences
           launchOptions.preferences['network.proxy.no_proxies_on'] = '';
           launchOptions.preferences['network.stricttransportsecurity.preloadlist'] = false;
           launchOptions.preferences['network.http.speculative-parallel-limit'] = 0;
@@ -35,15 +34,16 @@ module.exports = defineConfig({
     failOnStatusCode: false,
     defaultCommandTimeout: 12000,
   },
-  reporter: 'mochawesome',  
+  reporter: 'mochawesome',
   reporterOptions: {
-    reportDir: 'cypress/reports/mochawesome',  
+    reportDir: 'cypress/reports/mochawesome',
     overwrite: false,
     html: true,
     json: true,
+    quiet: true,
+    timestamp: 'mmddyyyy_HHMMss',
   },
   env: {
     allure: true,
   }
-  
 });

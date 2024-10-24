@@ -1,7 +1,7 @@
 // Import express
 const express = require('express');
 const app = express();
-import '@shelex/cypress-allure-plugin';
+// import '@shelex/cypress-allure-plugin';
 
 
 // Set up a port

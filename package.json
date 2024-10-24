@@ -6,8 +6,11 @@
   "scripts": {
     "cypress:open": "cypress open",
     "test": "cypress run --reporter mochawesome --reporter-options reportDir=cypress/results,overwrite=false,html=false,json=true",
-    "merge:reports": "mochawesome-merge cypress/results/*.json > mochawesome.json && mochawesome-report-generator mochawesome.json",
+    "merge:reports": "npx mochawesome-merge -f cypress/reports/mochawesome/*.json -o cypress/reports/mochawesome/merged.json",
+    "generate:report": "marge cypress/reports/mochawesome/merged.json -f report -o cypress/reports/mochawesome",
     "start": "node index.js",
+    "allure:generate": "allure generate allure-results --clean",
+    "allure:open": "allure open",
     "test:chrome": "npx cypress run --browser chrome -- --disable-web-security --user-data-dir=/tmp/chrome_dev_test",
     "test:firefox": "cypress run --browser firefox",
     "test:electron": "cypress run --browser electron",
@@ -20,7 +23,6 @@
   "devDependencies": {
     "@shelex/cypress-allure-plugin": "^2.40.2",
     "allure-commandline": "^2.30.0",
-    "cypress": "^13.15.0",
     "cypress-xpath": "^2.0.1",
     "http-proxy-middleware": "^3.0.3",
     "mocha": "^10.0.0",
@@ -29,6 +31,7 @@
     "mochawesome-report-generator": "^6.2.0"
   },
   "dependencies": {
+    "cypress": "^13.15.0",
     "express": "^4.21.1",
     "risevest": "file:"
   }
