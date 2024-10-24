@@ -70,9 +70,9 @@ jobs:
       - name: Check for MochaAwesome reports
         run: |
           echo "Checking for MochaAwesome report files..."
-          if ls cypress/reports/mochawesome/*.html 1> /dev/null 2>&1; then
+          if ls cypress/reports/mochawesome/*.json 1> /dev/null 2>&1; then
             echo "MochaAwesome report files found:"
-            ls -l cypress/reports/mochawesome/*.html
+            ls -l cypress/reports/mochawesome/*.json
           else
             echo "No MochaAwesome reports found."
             exit 0
@@ -83,6 +83,12 @@ jobs:
         with:
           name: allure-results-${{ matrix.browser }}
           path: allure-report
+
+      - name: Archive MochaAwesome Reports
+        uses: actions/upload-artifact@v4  # Updated to v4 for compatibility
+        with:
+          name: mochawesome-report-${{ matrix.browser }}
+          path: cypress/reports/mochawesome
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}  # Set in GitHub repo secrets
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
