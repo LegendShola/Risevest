@@ -1,0 +1,109 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2024-10-24T10:53:09.469Z",
+    "end": "2024-10-24T10:53:55.832Z",
+    "duration": 46363,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "0b23fd9e-2d20-4383-90e9-07c4275167eb",
+      "title": "",
+      "fullFile": "cypress\\tests\\ViewWallet.spec.js",
+      "file": "cypress\\tests\\ViewWallet.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "00b4ebdf-986f-4739-9869-ec1403921669",
+          "title": "User view wallet process",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Verify user is able to view wallet successfully",
+              "fullTitle": "User view wallet process Verify user is able to view wallet successfully",
+              "timedOut": null,
+              "duration": 44226,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "viewWallet.openWallet(); // Navigate to the wallet page\nviewWallet.assertBalance(); // Assert that the wallet balance is displayed correctly",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 12000ms: Expected to find element: `//span[normalize-space()='Wallet']`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 12000ms: Expected to find element: `//span[normalize-space()='Wallet']`, but never found it.\n    at Object.walletButton (webpack://risevest/./cypress/pageObjects/viewWalletPage.js:5:31)\n    at viewWalletPage.openWallet (webpack://risevest/./cypress/pageObjects/viewWalletPage.js:16:22)\n    at Context.eval (webpack://risevest/./cypress/tests/ViewWallet.spec.js:25:19)",
+                "diff": null
+              },
+              "uuid": "a08a8f09-d393-4665-aa4d-9d8c9ee34489",
+              "parentUUID": "00b4ebdf-986f-4739-9869-ec1403921669",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "a08a8f09-d393-4665-aa4d-9d8c9ee34489"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 44226,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports/mochawesome",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

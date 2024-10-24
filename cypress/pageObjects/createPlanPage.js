@@ -226,7 +226,7 @@ class createPlanPage {
                     });
                     cy.wrap($cards[0]).click(); // Click on the plan to delete
                 });
-                cy.contains('button', 'No, later').click({ force: true }); // Click to dismiss any confirmation
+                cy.xpath("//button[normalize-space()='No, later']").click(); // Click to dismiss any confirmation
                 cy.xpath("//header//button[2]").click(); // Click to delete the plan
                 cy.xpath("//span[normalize-space()='Delete Plan']").click(); // Confirm deletion
                 cy.xpath("//button[normalize-space()='Yes']").click(); // Final confirmation to delete
@@ -246,7 +246,8 @@ class createPlanPage {
 
     assertDateFailure() {
         cy.xpath("//div[contains(text(),'Your request body is invalid')]") // Assert for invalid request body error
-            .should('contain', 'Your request body is invalid');
+            // .should('contain', 'Your request body is invalid');
+            .should('be.visible');
     }
 }
 
