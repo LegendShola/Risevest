@@ -17,9 +17,9 @@ Cypress.Commands.overwrite('click', (originalFn, subject, options) => {
 });
 
 // Overwrite the default type command to always use { force: true }
-Cypress.Commands.overwrite('type', (originalFn, subject, options) => {
+Cypress.Commands.overwrite('type', (originalFn, subject, text, options) => {
     options = { ...options, force: true };
-    return originalFn(subject, options);
+    return originalFn(subject, text, options);
 });
 
 // Custome command to click Continue Button
