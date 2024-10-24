@@ -7,7 +7,7 @@ class viewPlansPage {
   
     // Method to navigate to the plans page
     clickPlansButton() {
-        this.elements.plansButton().click({force : true}); // Click the plans button to navigate
+        this.elements.plansButton().click(); // Click the plans button to navigate
     }
 
     // Assertion to verify that the user is on the plans page

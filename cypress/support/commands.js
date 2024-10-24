@@ -10,6 +10,13 @@
 //
 //
 
+// Overwrite the default click command to always use { force: true }
+Cypress.Commands.overwrite('click', (originalFn, subject, options) => {
+    options = { ...options, force: true };
+    return originalFn(subject, options);
+});
+
+// Custome command to click Continue Button
 Cypress.Commands.add('clickContinue', () => {
     cy.wait(3000); // Wait for necessary loading
     cy.xpath("//button[normalize-space()='Continue']").click({force:true});
