@@ -40,7 +40,6 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
-
       - name: Cache Cypress binary
         uses: actions/cache@v4  # Updated to v4 for compatibility
         with:
@@ -48,7 +47,6 @@ jobs:
           key: ${{ runner.os }}-cypress-${{ hashFiles('package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-cypress-
-
       - name: Install dependencies
         run: npm ci
 
@@ -58,17 +56,14 @@ jobs:
       - name: Install Cypress
         run: sudo npx cypress install
 
-      - name: Create reports directories
-        run: |
-          mkdir -p cypress/reports/mochawesome  # Directory for mochawesome reports
-          mkdir -p allure-results  # Directory for allure results
+      - name: Create reports directory
+        run: mkdir -p cypress/reports/mochawesome  # Directory for mochawesome reports
 
       - name: Run Cypress tests with Allure and MochaAwesome on ${{ matrix.browser }}
         run: |
           sudo apt-get install -y xvfb
           xvfb-run --auto-servernum --server-args="-screen 0 1280x1024x24" npx cypress run --browser ${{ matrix.browser }} || true  # Allow failures without breaking the workflow
           npx allure generate allure-results --clean  # Generate Allure report
-
       - name: Check for MochaAwesome reports
         run: |
           echo "Checking for MochaAwesome report files..."
@@ -79,12 +74,11 @@ jobs:
             echo "No MochaAwesome reports found."
             exit 0
           fi
-
       - name: Archive Allure Results
         uses: actions/upload-artifact@v4  # Updated to v4 for compatibility
         with:
           name: allure-results-${{ matrix.browser }}
-          path: allure-results
+          path: allure-report
 
       - name: Archive MochaAwesome Reports
         uses: actions/upload-artifact@v4  # Updated to v4 for compatibility

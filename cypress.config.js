@@ -1,12 +1,15 @@
 const { defineConfig } = require("cypress");
 const allureWriter = require('@shelex/cypress-allure-plugin/writer');
-const mochawesome = require('mochawesome');
+const { allureCypress } = require("allure-cypress/reporter");
 
 module.exports = defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
       console.log('Allure plugin initialized');
       allureWriter(on, config);
+      allureCypress(on, config, {
+        resultsDir: "allure-results",
+      });
 
       on('before:browser:launch', (browser = {}, launchOptions) => {
         if (browser.name === 'chrome' || browser.name === 'edge') {

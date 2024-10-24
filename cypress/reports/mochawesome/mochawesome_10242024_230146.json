@@ -1,0 +1,221 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 7,
+    "failures": -6,
+    "start": "2024-10-24T22:01:46.840Z",
+    "end": "2024-10-24T22:01:46.956Z",
+    "duration": 116,
+    "testsRegistered": 7,
+    "passPercent": null,
+    "pendingPercent": 100,
+    "other": 6,
+    "hasOther": true,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "263fcd4b-3b8f-433e-a287-778c4b1680d9",
+      "title": "",
+      "fullFile": "cypress\\tests\\Signin.spec.js",
+      "file": "cypress\\tests\\Signin.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "43418830-e2b2-4a2e-9c22-ba15e2291484",
+          "title": "User sign in process",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Verify user is able to sign in successfully",
+              "fullTitle": "User sign in process Verify user is able to sign in successfully",
+              "timedOut": null,
+              "duration": 0,
+              "state": "pending",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": true,
+              "context": null,
+              "code": "const email = data.validEmail; // Get valid email from test data\nconst password = data.password; // Get valid password from test data\nsignIn.signIn(email, password); // Perform sign-in action\nsignIn.assertSuccess(); // Assert successful sign-in",
+              "err": {},
+              "uuid": "869cf8d7-c4e5-440a-b58c-bfd42681a332",
+              "parentUUID": "43418830-e2b2-4a2e-9c22-ba15e2291484",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Verify user is unable to sign in with a wrong email address",
+              "fullTitle": "User sign in process Verify user is unable to sign in with a wrong email address",
+              "timedOut": null,
+              "duration": 0,
+              "state": "pending",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": true,
+              "context": null,
+              "code": "const email = data.wrongEmail; // Get wrong email from test data\nconst password = data.password; // Get valid password from test data\nsignIn.signIn(email, password); // Perform sign-in action\nsignIn.assertFailure(); // Assert failure due to wrong email",
+              "err": {},
+              "uuid": "fbc2e925-3a6f-4f9e-89f7-ca285bc83ce2",
+              "parentUUID": "43418830-e2b2-4a2e-9c22-ba15e2291484",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Verify user is unable to sign in with an invalid email address",
+              "fullTitle": "User sign in process Verify user is unable to sign in with an invalid email address",
+              "timedOut": null,
+              "duration": 0,
+              "state": "pending",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": true,
+              "context": null,
+              "code": "const email = data.invalidEmail; // Get invalid email from test data\nconst password = data.password; // Get valid password from test data\nsignIn.signIn(email, password); // Perform sign-in action\nsignIn.assertInvalidEmail(); // Assert failure due to invalid email format",
+              "err": {},
+              "uuid": "241aafc9-4cb0-4c6c-a757-76b85d6f75f6",
+              "parentUUID": "43418830-e2b2-4a2e-9c22-ba15e2291484",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Verify user is unable to sign in with invalid password",
+              "fullTitle": "User sign in process Verify user is unable to sign in with invalid password",
+              "timedOut": null,
+              "duration": 0,
+              "state": "pending",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": true,
+              "context": null,
+              "code": "const email = data.validEmail; // Get valid email from test data\nconst password = data.invalidPassword; // Get invalid password from test data\nsignIn.signIn(email, password); // Perform sign-in action\nsignIn.assertFailure(); // Assert failure due to invalid password",
+              "err": {},
+              "uuid": "5b171389-2adc-425b-be77-aaff1cabde70",
+              "parentUUID": "43418830-e2b2-4a2e-9c22-ba15e2291484",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Verify user is unable to sign in with an empty password field",
+              "fullTitle": "User sign in process Verify user is unable to sign in with an empty password field",
+              "timedOut": null,
+              "duration": 0,
+              "state": "pending",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": true,
+              "context": null,
+              "code": "const email = data.validEmail; // Get valid email from test data\nconst password = data.invalidPassword; // Get any password to clear later\nsignIn.signInEmptyPassword(email, password); // Perform sign-in with empty password\nsignIn.assertEmptyPassword(); // Assert failure due to empty password",
+              "err": {},
+              "uuid": "eeb5015c-bf5a-4e67-905e-e9292f4e712b",
+              "parentUUID": "43418830-e2b2-4a2e-9c22-ba15e2291484",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Verify user is unable to sign in with an empty email field",
+              "fullTitle": "User sign in process Verify user is unable to sign in with an empty email field",
+              "timedOut": null,
+              "duration": 0,
+              "state": "pending",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": true,
+              "context": null,
+              "code": "const email = data.validEmail; // Get any email to clear later\nconst password = data.password; // Get valid password from test data\nsignIn.signInEmptyEmail(email, password); // Perform sign-in with empty email\nsignIn.assertEmptyEmail(); // Assert failure due to empty email",
+              "err": {},
+              "uuid": "e8e968a9-2d01-481f-b837-c4d65d159ce5",
+              "parentUUID": "43418830-e2b2-4a2e-9c22-ba15e2291484",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Verify user is unable to sign in with an empty email and password field",
+              "fullTitle": "User sign in process Verify user is unable to sign in with an empty email and password field",
+              "timedOut": null,
+              "duration": 0,
+              "state": "pending",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": true,
+              "context": null,
+              "code": "const email = data.validEmail; // Get any email to clear later\nconst password = data.password; // Get valid password from test data\nsignIn.signInEmptyEmailAndPassword(email, password); // Perform sign-in with both fields empty\nsignIn.assertEmptyEmail(); // Assert failure due to empty email\nsignIn.assertEmptyPassword(); // Assert failure due to empty password",
+              "err": {},
+              "uuid": "526eedb0-9736-4975-baa6-e13b38733dc9",
+              "parentUUID": "43418830-e2b2-4a2e-9c22-ba15e2291484",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [],
+          "pending": [
+            "869cf8d7-c4e5-440a-b58c-bfd42681a332",
+            "fbc2e925-3a6f-4f9e-89f7-ca285bc83ce2",
+            "241aafc9-4cb0-4c6c-a757-76b85d6f75f6",
+            "5b171389-2adc-425b-be77-aaff1cabde70",
+            "eeb5015c-bf5a-4e67-905e-e9292f4e712b",
+            "e8e968a9-2d01-481f-b837-c4d65d159ce5",
+            "526eedb0-9736-4975-baa6-e13b38733dc9"
+          ],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": true,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports/mochawesome",
+        "overwrite": false,
+        "html": true,
+        "json": true,
+        "quiet": true,
+        "timestamp": "mmddyyyy_HHMMss"
+      },
+      "version": "6.2.0"
+    }
+  }
+}
