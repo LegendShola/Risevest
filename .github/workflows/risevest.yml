@@ -74,6 +74,10 @@ jobs:
             echo "No MochaAwesome reports found."
             exit 0
           fi
+      - name: Generate Allure Report
+        run: |
+            npx allure generate cypress/reports/allure-results --clean --output cypress/reports/allure-report
+      
       - name: Archive Allure Results
         uses: actions/upload-artifact@v4  # Updated to v4 for compatibility
         with:
