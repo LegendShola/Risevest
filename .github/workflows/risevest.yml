@@ -61,13 +61,10 @@ jobs:
       - name: Create reports directory
         run: mkdir -p cypress/reports/mochawesome  # Directory for mochawesome reports
 
-      - name: Run tests on ${{ matrix.browser }}
-        run: npm run test:${{ matrix.browser }}
-
-      - name: Run Cypress tests with Allure and MochaAwesome
+      - name: Run Cypress tests with Allure and MochaAwesome on ${{ matrix.browser }}
         run: |
           sudo apt-get install -y xvfb
-          xvfb-run --auto-servernum --server-args="-screen 0 1280x1024x24" npx cypress run || true  # Allow failures without breaking the workflow
+          xvfb-run --auto-servernum --server-args="-screen 0 1280x1024x24" npx cypress run --browser ${{ matrix.browser }} || true  # Allow failures without breaking the workflow
           npx allure generate allure-results --clean  # Generate Allure report
 
       - name: Check for MochaAwesome reports
