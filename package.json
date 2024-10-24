@@ -7,7 +7,11 @@
     "cypress:open": "cypress open",
     "test": "cypress run --reporter mochawesome --reporter-options reportDir=cypress/results,overwrite=false,html=false,json=true",
     "merge:reports": "mochawesome-merge cypress/results/*.json > mochawesome.json && mochawesome-report-generator mochawesome.json",
-    "start": "node index.js"
+    "start": "node index.js",
+    "test:chrome": "npx cypress run --browser chrome -- --disable-web-security --user-data-dir=/tmp/chrome_dev_test",
+    "test:firefox": "cypress run --browser firefox",
+    "test:edge": "cypress run --browser edge -- --disable-web-security --user-data-dir=/tmp/chrome_dev_test",
+    "test:all": "npm run test:chrome && npm run test:firefox && npm run test:edge"
   },
   "keywords": [],
   "author": "Oluwashola Olagbemisoye",
@@ -17,6 +21,7 @@
     "allure-commandline": "^2.30.0",
     "cypress": "^13.15.0",
     "cypress-xpath": "^2.0.1",
+    "http-proxy-middleware": "^3.0.3",
     "mocha": "^10.0.0",
     "mochawesome": "^7.1.3",
     "mochawesome-merge": "^4.3.0",

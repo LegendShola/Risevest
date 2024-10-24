@@ -14,6 +14,15 @@ on:
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        browser: [chrome, firefox, edge, electron]
+
+    env:
+      NODE_VERSION: '20'
+      CYPRESS_CACHE_FOLDER: ~/.cache/Cypress
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4  # Updated to v4 for compatibility
@@ -21,12 +30,20 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20'  # Updated to Node.js 20 for compatibility
+          node-version: ${{ env.NODE_VERSION }}  # Use environment variable
+
+      - name: Cache Node modules
+        uses: actions/cache@v4  # Updated to v4 for compatibility
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
 
       - name: Cache Cypress binary
         uses: actions/cache@v4  # Updated to v4 for compatibility
         with:
-          path: ~/.cache/Cypress
+          path: ${{ env.CYPRESS_CACHE_FOLDER }}
           key: ${{ runner.os }}-cypress-${{ hashFiles('package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-cypress-
@@ -35,13 +52,16 @@ jobs:
         run: npm ci
 
       - name: Ensure Cypress binary permissions
-        run: chmod +x ~/.cache/Cypress/13.15.0/Cypress/Cypress
+        run: chmod +x ${{ env.CYPRESS_CACHE_FOLDER }}/13.15.0/Cypress/Cypress
 
       - name: Install Cypress
         run: sudo npx cypress install
 
       - name: Create reports directory
         run: mkdir -p cypress/reports/mochawesome  # Directory for mochawesome reports
+
+      - name: Run tests on ${{ matrix.browser }}
+        run: npm run test:${{ matrix.browser }}
 
       - name: Run Cypress tests with Allure and MochaAwesome
         run: |

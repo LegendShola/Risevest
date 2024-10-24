@@ -125,7 +125,7 @@ describe('Create plan', () => {
     it('Verify user is unable to create plan with a past date', () => {
         const name = createPlan.generatePlanName();
         const amount = createPlan.generateRandomAmount();
-        const date = "22-03-2022"; // Past date
+        const date = data.pastDate; // Past date
         
         createPlan.nairaBusinessPlan(name, amount, date);
         createPlan.assertDateFailure(); // Assert failure due to past date
@@ -135,7 +135,7 @@ describe('Create plan', () => {
     it('Verify user is unable to create plan with a invalid date', () => {
         const name = createPlan.generatePlanName();
         const amount = createPlan.generateRandomAmount();
-        const date = "23-04-0000"; // Invalid date format
+        const date = data.invalidDate; // Invalid date format
         
         createPlan.nairaBusinessPlan(name, amount, date);
         createPlan.assertDateFailure(); // Assert failure due to invalid date

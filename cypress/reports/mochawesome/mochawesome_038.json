@@ -1,0 +1,105 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2024-10-24T04:40:21.289Z",
+    "end": "2024-10-24T04:40:32.738Z",
+    "duration": 11449,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "2ddf354d-a663-4805-a8bb-4415fd66b256",
+      "title": "",
+      "fullFile": "cypress\\tests\\ViewPlans.spec.js",
+      "file": "cypress\\tests\\ViewPlans.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "ea354853-d4c9-4852-9e66-e256076f56fd",
+          "title": "View plans",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Verify user is able to view plans",
+              "fullTitle": "View plans Verify user is able to view plans",
+              "timedOut": null,
+              "duration": 11231,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Click on the plans button to navigate to the plans page\nviewPlans.clickPlansButton();\n// Assert that plans are displayed successfully\nviewPlans.assertPlans();",
+              "err": {},
+              "uuid": "0f656cfb-72a1-4cdd-9cc4-d5164063a31f",
+              "parentUUID": "ea354853-d4c9-4852-9e66-e256076f56fd",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "0f656cfb-72a1-4cdd-9cc4-d5164063a31f"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 11231,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports/mochawesome",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

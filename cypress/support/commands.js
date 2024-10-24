@@ -9,6 +9,12 @@
 // ***********************************************
 //
 //
+
+Cypress.Commands.add('clickContinue', () => {
+    cy.wait(3000); // Wait for necessary loading
+    cy.xpath("//button[normalize-space()='Continue']").click();
+});
+
 // -- This is a parent command --
 // Cypress.Commands.add('login', (email, password) => { ... })
 //

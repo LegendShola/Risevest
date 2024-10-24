@@ -1,11 +1,31 @@
 const { defineConfig } = require("cypress");
+const allureWriter = require('@shelex/cypress-allure-plugin/writer')
 
 module.exports = defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
-      // implement node event listeners here
+      on('before:browser:launch', (browser = {}, launchOptions) => {
+
+        if (browser.name === 'chrome' || browser.name === 'edge') {
+          // For Chrome and Edge, disable web security
+          launchOptions.args.push('--disable-web-security');
+          launchOptions.args.push('--allow-insecure-localhost'); // Optional, for localhost testing
+        }
+
+        if (browser.name === 'firefox') {
+          // For Firefox, disable web security by setting appropriate preferences
+          launchOptions.preferences['network.proxy.no_proxies_on'] = '';
+          launchOptions.preferences['network.stricttransportsecurity.preloadlist'] = false;
+          launchOptions.preferences['network.http.speculative-parallel-limit'] = 0;
+          launchOptions.preferences['security.fileuri.strict_origin_policy'] = false;
+        }
+        return launchOptions;
+      });
+
+      allureWriter(on, config);
+      return config;
     },
-    baseUrl: "https://app.risevest.com/",
+    baseUrl: "http://app.risevest.com/",
     specPattern: 'cypress/tests/**/*.spec.js',
     viewportWidth: 1280,
     viewportHeight: 720,

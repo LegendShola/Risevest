@@ -8,7 +8,7 @@
   "invalidEmail": "xyz@risecom",
   "password": "@Legend7438",
   "invalidPassword": "xyz@rise.Com",
-  "empty": "",
+  "invalidDate": "23-04-0000",
   "pastDate": "23-03-2023",
   "futureDates": [
     "22-10-2024",
