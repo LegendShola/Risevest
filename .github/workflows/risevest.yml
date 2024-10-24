@@ -16,8 +16,9 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
+      fail-fast: false  # Ensure that failure on one browser doesn't affect others
       matrix:
-        browser: [chrome, firefox, edge, electron]
+        browser: [chrome, firefox, edge, electron]  # Browsers to test
 
     env:
       NODE_VERSION: '20'
@@ -66,7 +67,7 @@ jobs:
       - name: Run Cypress tests with Allure and MochaAwesome
         run: |
           sudo apt-get install -y xvfb
-          xvfb-run --auto-servernum --server-args="-screen 0 1280x1024x24" npx cypress run || true
+          xvfb-run --auto-servernum --server-args="-screen 0 1280x1024x24" npx cypress run || true  # Allow failures without breaking the workflow
           npx allure generate allure-results --clean  # Generate Allure report
 
       - name: Check for MochaAwesome reports
@@ -78,7 +79,6 @@ jobs:
           else
             echo "No MochaAwesome reports found."
             exit 0
-          fi
 
       - name: Archive Allure Results
         uses: actions/upload-artifact@v4  # Updated to v4 for compatibility
