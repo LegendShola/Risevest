@@ -47,6 +47,7 @@ module.exports = defineConfig({
     timestamp: 'mmddyyyy_HHMMss',
   },
   env: {
+    allureOutputPath: 'cypress/reports/allure-results',
     allure: true,
   }
 });

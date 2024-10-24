@@ -8,7 +8,6 @@ on:
     branches:
       - main
   schedule:
-    # Runs the workflow every 3 hours
     - cron: '0 */3 * * *'
 
 jobs:
@@ -40,6 +39,7 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
+
       - name: Cache Cypress binary
         uses: actions/cache@v4  # Updated to v4 for compatibility
         with:
@@ -47,6 +47,7 @@ jobs:
           key: ${{ runner.os }}-cypress-${{ hashFiles('package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-cypress-
+
       - name: Install dependencies
         run: npm ci
 
@@ -57,13 +58,16 @@ jobs:
         run: sudo npx cypress install
 
       - name: Create reports directory
-        run: mkdir -p cypress/reports/mochawesome  # Directory for mochawesome reports
+        run: |
+          mkdir -p cypress/reports/allure-results  # Directory for Allure results
+          mkdir -p cypress/reports/mochawesome  # Directory for Mochawesome reports
 
       - name: Run Cypress tests with Allure and MochaAwesome on ${{ matrix.browser }}
         run: |
           sudo apt-get install -y xvfb
-          xvfb-run --auto-servernum --server-args="-screen 0 1280x1024x24" npx cypress run --browser ${{ matrix.browser }} || true  # Allow failures without breaking the workflow
-          npx allure generate allure-results --clean  # Generate Allure report
+          xvfb-run --auto-servernum --server-args="-screen 0 1280x1024x24" npx cypress run --browser ${{ matrix.browser }} --env allureOutputPath=cypress/reports/allure-results || true  # Allow failures without breaking the workflow
+          npx allure generate cypress/reports/allure-results --clean --output cypress/reports/allure-report  # Generate Allure report
+
       - name: Check for MochaAwesome reports
         run: |
           echo "Checking for MochaAwesome report files..."
@@ -74,15 +78,18 @@ jobs:
             echo "No MochaAwesome reports found."
             exit 0
           fi
-      - name: Generate Allure Report
-        run: |
-            npx allure generate cypress/reports/allure-results --clean --output cypress/reports/allure-report
-      
+
       - name: Archive Allure Results
         uses: actions/upload-artifact@v4  # Updated to v4 for compatibility
         with:
           name: allure-results-${{ matrix.browser }}
-          path: allure-report
+          path: cypress/reports/allure-results
+
+      - name: Archive Allure Report
+        uses: actions/upload-artifact@v4  # Updated to v4 for compatibility
+        with:
+          name: allure-report-${{ matrix.browser }}
+          path: cypress/reports/allure-report
 
       - name: Archive MochaAwesome Reports
         uses: actions/upload-artifact@v4  # Updated to v4 for compatibility
