@@ -62,37 +62,41 @@ jobs:
           mkdir -p cypress/reports/allure-results  # Directory for Allure results
           mkdir -p cypress/reports/mochawesome  # Directory for Mochawesome reports
 
-      - name: Run Cypress tests with Allure and MochaAwesome on ${{ matrix.browser }}
+      - name: Run Cypress tests with Allure on ${{ matrix.browser }}
         run: |
           sudo apt-get install -y xvfb
           xvfb-run --auto-servernum --server-args="-screen 0 1280x1024x24" npx cypress run --browser ${{ matrix.browser }} --env allureOutputPath=cypress/reports/allure-results || true  # Allow failures without breaking the workflow
           npx allure generate cypress/reports/allure-results --clean --output cypress/reports/allure-report  # Generate Allure report
 
-      - name: Check for MochaAwesome reports
+      - name: Check for Allure results
         run: |
-          echo "Checking for MochaAwesome report files..."
-          if ls cypress/reports/mochawesome/*.json 1> /dev/null 2>&1; then
-            echo "MochaAwesome report files found:"
-            ls -l cypress/reports/mochawesome/*.json
+          echo "Checking for Allure results files..."
+          if ls cypress/reports/allure-results/*.json 1> /dev/null 2>&1; then
+            echo "Allure results files found:"
+            ls -l cypress/reports/allure-results/*.json
           else
-            echo "No MochaAwesome reports found."
-            exit 0
+            echo "No Allure results found."
+            exit 1
           fi
 
-      - name: Archive Allure Results
-        uses: actions/upload-artifact@v4  # Updated to v4 for compatibility
+      - name: Upload Allure Results
+        uses: actions/upload-artifact@v4
         with:
           name: allure-results-${{ matrix.browser }}
           path: cypress/reports/allure-results
+          if-no-files-found: warn
+          compression-level: 6
+          overwrite: false
+          include-hidden-files: false
 
       - name: Archive Allure Report
-        uses: actions/upload-artifact@v4  # Updated to v4 for compatibility
+        uses: actions/upload-artifact@v4
         with:
           name: allure-report-${{ matrix.browser }}
           path: cypress/reports/allure-report
 
       - name: Archive MochaAwesome Reports
-        uses: actions/upload-artifact@v4  # Updated to v4 for compatibility
+        uses: actions/upload-artifact@v4
         with:
           name: mochawesome-report-${{ matrix.browser }}
           path: cypress/reports/mochawesome
