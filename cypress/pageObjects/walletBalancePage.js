@@ -8,7 +8,7 @@ class walletBalancePage {
   
     // Method to click the eye icon to toggle balance visibility
     clickEyeIcon() {
-        this.elements.eyeIcon().click(); // Click the eye icon button
+        this.elements.eyeIcon().click({force:true}); // Click the eye icon button
     }
 
     // Assertion to verify that the balance is hidden

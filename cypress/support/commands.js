@@ -12,7 +12,7 @@
 
 Cypress.Commands.add('clickContinue', () => {
     cy.wait(3000); // Wait for necessary loading
-    cy.xpath("//button[normalize-space()='Continue']").click();
+    cy.xpath("//button[normalize-space()='Continue']").click({force:true});
 });
 
 // -- This is a parent command --
