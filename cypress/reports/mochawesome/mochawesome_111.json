@@ -1,0 +1,124 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 2,
+    "failures": -1,
+    "start": "2024-10-24T15:29:18.645Z",
+    "end": "2024-10-24T15:29:19.074Z",
+    "duration": 429,
+    "testsRegistered": 2,
+    "passPercent": null,
+    "pendingPercent": 100,
+    "other": 1,
+    "hasOther": true,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "0faca099-44a2-4539-831e-850dd018a753",
+      "title": "",
+      "fullFile": "cypress\\tests\\WalletBalance.spec.js",
+      "file": "cypress\\tests\\WalletBalance.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "d997c313-c8c3-4939-a902-a14fd879568a",
+          "title": "Show/Hide Wallet Balance",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Verify user is able to hide wallet balance",
+              "fullTitle": "Show/Hide Wallet Balance Verify user is able to hide wallet balance",
+              "timedOut": null,
+              "duration": 0,
+              "state": "pending",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": true,
+              "context": null,
+              "code": "walletBalance.clickEyeIcon(); // Click the eye icon to hide the balance\nwalletBalance.assertHideBalance(); // Assert that the balance is hidden",
+              "err": {},
+              "uuid": "9ccd7f55-a471-476a-a289-21e2a84b55e0",
+              "parentUUID": "d997c313-c8c3-4939-a902-a14fd879568a",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Verify user is able to show wallet balance",
+              "fullTitle": "Show/Hide Wallet Balance Verify user is able to show wallet balance",
+              "timedOut": null,
+              "duration": 0,
+              "state": "pending",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": true,
+              "context": null,
+              "code": "walletBalance.clickEyeIcon(); // Click the eye icon to hide the balance first\nwalletBalance.clickEyeIcon(); // Click the eye icon again to show the balance\nwalletBalance.assertShowBalance(); // Assert that the balance is visible",
+              "err": {},
+              "uuid": "9f618afb-325f-4bcd-b6ea-e595c63d07cc",
+              "parentUUID": "d997c313-c8c3-4939-a902-a14fd879568a",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [],
+          "pending": [
+            "9ccd7f55-a471-476a-a289-21e2a84b55e0",
+            "9f618afb-325f-4bcd-b6ea-e595c63d07cc"
+          ],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports/mochawesome",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

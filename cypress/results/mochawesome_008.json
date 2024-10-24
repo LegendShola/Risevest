@@ -1,0 +1,105 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2024-10-24T14:49:04.060Z",
+    "end": "2024-10-24T14:49:24.000Z",
+    "duration": 19940,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "b49b4eb6-b027-4a19-9a9e-49595b6253d8",
+      "title": "",
+      "fullFile": "cypress\\tests\\ViewWallet.spec.js",
+      "file": "cypress\\tests\\ViewWallet.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "e2e04eb9-72fa-48a6-b39a-6c20fbc353d7",
+          "title": "User view wallet process",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Verify user is able to view wallet successfully",
+              "fullTitle": "User view wallet process Verify user is able to view wallet successfully",
+              "timedOut": null,
+              "duration": 16806,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "viewWallet.openWallet(); // Navigate to the wallet page\nviewWallet.assertBalance(); // Assert that the wallet balance is displayed correctly",
+              "err": {},
+              "uuid": "f81f617d-8ce0-4ddf-a707-0e6f98f48e7f",
+              "parentUUID": "e2e04eb9-72fa-48a6-b39a-6c20fbc353d7",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "f81f617d-8ce0-4ddf-a707-0e6f98f48e7f"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 16806,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

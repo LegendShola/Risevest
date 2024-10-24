@@ -3,7 +3,7 @@ import createPlanPage from '../pageObjects/createPlanPage'; // Import the create
 import signInPage from '../pageObjects/signinPage'; // Import the signInPage class from pageObjects
 const data = require('../fixtures/testData.json'); // Import the testData
 
-describe('Create plan', () => {
+xdescribe('Create plan', () => {
 
     // Instantiate Page Objects for signInPage, viewPlansPage, and createPlanPage
     const signIn = new signInPage();

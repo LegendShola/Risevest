@@ -10,6 +10,8 @@
 //
 //
 
+import '@shelex/cypress-allure-plugin';
+
 // Overwrite the default click command to always use { force: true }
 Cypress.Commands.overwrite('click', (originalFn, subject, options) => {
     options = { ...options, force: true };

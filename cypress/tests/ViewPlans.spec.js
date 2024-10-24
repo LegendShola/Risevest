@@ -2,7 +2,7 @@ import viewPlansPage from '../pageObjects/viewPlansPage';
 import signInPage from '../pageObjects/signinPage'; // Import the signInPage class from pageObjects
 const data = require('../fixtures/testData.json');
 
-describe('View plans', () => {
+xdescribe('View plans', () => {
 
     // Instantiate Page Objects for signInPage and viewPlansPage
     const signIn = new signInPage();

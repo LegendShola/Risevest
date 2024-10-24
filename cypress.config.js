@@ -4,8 +4,10 @@ const allureWriter = require('@shelex/cypress-allure-plugin/writer')
 module.exports = defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
-      on('before:browser:launch', (browser = {}, launchOptions) => {
+      console.log('Allure plugin initialized');
+      allureWriter(on, config);
 
+      on('before:browser:launch', (browser = {}, launchOptions) => {
         if (browser.name === 'chrome' || browser.name === 'edge') {
           // For Chrome and Edge, disable web security
           launchOptions.args.push('--disable-web-security');
@@ -19,13 +21,13 @@ module.exports = defineConfig({
           launchOptions.preferences['network.http.speculative-parallel-limit'] = 0;
           launchOptions.preferences['security.fileuri.strict_origin_policy'] = false;
         }
+
         return launchOptions;
       });
 
-      allureWriter(on, config);
       return config;
     },
-    baseUrl: "http://app.risevest.com/",
+    baseUrl: "https://app.risevest.com/",
     specPattern: 'cypress/tests/**/*.spec.js',
     viewportWidth: 1280,
     viewportHeight: 720,

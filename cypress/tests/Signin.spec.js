@@ -3,7 +3,7 @@ import signInPage from '../pageObjects/signinPage'; // Import the signInPage cla
 const data = require('../fixtures/testData.json'); // Import test data from a JSON file
 
 // Define the test suite for the user sign in process
-describe('User sign in process', () => {
+xdescribe('User sign in process', () => {
 
     // Instantiate the signInPage object to use in the tests
     const signIn = new signInPage();

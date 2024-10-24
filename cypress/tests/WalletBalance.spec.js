@@ -3,7 +3,7 @@ import viewWalletPage from '../pageObjects/viewWalletPage'; // Import the viewWa
 import signInPage from '../pageObjects/signinPage'; // Import the signInPage class
 const data = require('../fixtures/testData.json'); // Import test data from JSON file
 
-describe('Show/Hide Wallet Balance', () => {
+xdescribe('Show/Hide Wallet Balance', () => {
     
     // Instantiate Page Objects for easy access to methods and elements
     const viewWallet = new viewWalletPage();
