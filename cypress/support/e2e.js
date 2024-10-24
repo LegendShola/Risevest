@@ -17,6 +17,7 @@
 import './commands'
 require('cypress-xpath');
 import "allure-cypress";
+import '@shelex/cypress-allure-plugin';
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')

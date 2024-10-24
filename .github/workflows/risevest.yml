@@ -66,40 +66,16 @@ jobs:
         run: |
           sudo apt-get install -y xvfb
           xvfb-run --auto-servernum --server-args="-screen 0 1280x1024x24" npx cypress run --browser ${{ matrix.browser }} --env allureOutputPath=cypress/reports/allure-results || true  # Allow failures without breaking the workflow
+          echo "Cypress test run completed."
+
+      - name: Generate Allure Report
+        run: |
           npx allure generate cypress/reports/allure-results --clean --output cypress/reports/allure-report  # Generate Allure report
+          echo "Allure report generated."
 
       - name: Check for Allure results
         run: |
           echo "Checking for Allure results files..."
-          if ls cypress/reports/allure-results/*.json 1> /dev/null 2>&1; then
-            echo "Allure results files found:"
-            ls -l cypress/reports/allure-results/*.json
-          else
-            echo "No Allure results found."
-            exit 1
-          fi
-
-      - name: Upload Allure Results
-        uses: actions/upload-artifact@v4
-        with:
-          name: allure-results-${{ matrix.browser }}
-          path: cypress/reports/allure-results
-          if-no-files-found: warn
-          compression-level: 6
-          overwrite: false
-          include-hidden-files: false
-
-      - name: Archive Allure Report
-        uses: actions/upload-artifact@v4
-        with:
-          name: allure-report-${{ matrix.browser }}
-          path: cypress/reports/allure-report
-
-      - name: Archive MochaAwesome Reports
-        uses: actions/upload-artifact@v4
-        with:
-          name: mochawesome-report-${{ matrix.browser }}
-          path: cypress/reports/mochawesome
-        env:
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}  # Set in GitHub repo secrets
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          if [ -d "cypress/reports/allure-results" ]; then
+            echo "Allure results directory found."
+            if ls cypress/reports/allure-results/*.json 1> /dev/null
