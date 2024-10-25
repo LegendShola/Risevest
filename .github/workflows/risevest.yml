@@ -15,9 +15,9 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
-      fail-fast: false  # Ensure that failure on one browser doesn't affect others
+      fail-fast: false
       matrix:
-        browser: [chrome, firefox, edge, electron]  # Browsers to test
+        browser: [chrome, firefox, edge, electron]
 
     env:
       NODE_VERSION: '20'
@@ -25,15 +25,15 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4  # Updated to v4 for compatibility
+        uses: actions/checkout@v4
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ env.NODE_VERSION }}  # Use environment variable
+          node-version: ${{ env.NODE_VERSION }}
 
       - name: Cache Node modules
-        uses: actions/cache@v4  # Updated to v4 for compatibility
+        uses: actions/cache@v4
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
@@ -41,7 +41,7 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: Cache Cypress binary
-        uses: actions/cache@v4  # Updated to v4 for compatibility
+        uses: actions/cache@v4
         with:
           path: ${{ env.CYPRESS_CACHE_FOLDER }}
           key: ${{ runner.os }}-cypress-${{ hashFiles('package-lock.json') }}
@@ -59,23 +59,47 @@ jobs:
 
       - name: Create reports directory
         run: |
-          mkdir -p cypress/reports/allure-results  # Directory for Allure results
-          mkdir -p cypress/reports/mochawesome  # Directory for Mochawesome reports
+          mkdir -p cypress/reports/allure-results
+          mkdir -p cypress/reports/mochawesome
 
       - name: Run Cypress tests with Allure on ${{ matrix.browser }}
         run: |
           sudo apt-get install -y xvfb
-          xvfb-run --auto-servernum --server-args="-screen 0 1280x1024x24" npx cypress run --browser ${{ matrix.browser }} --env allureOutputPath=cypress/reports/allure-results || true  # Allow failures without breaking the workflow
-          echo "Cypress test run completed."
-
-      - name: Generate Allure Report
-        run: |
-          npx allure generate cypress/reports/allure-results --clean --output cypress/reports/allure-report  # Generate Allure report
-          echo "Allure report generated."
+          xvfb-run --auto-servernum --server-args="-screen 0 1280x1024x24" npx cypress run --browser ${{ matrix.browser }} --env allure=true,allureResultsPath=cypress/reports/allure-results || true
+          npx allure generate cypress/reports/allure-results --clean --output cypress/reports/allure-report
 
       - name: Check for Allure results
         run: |
           echo "Checking for Allure results files..."
-          if [ -d "cypress/reports/allure-results" ]; then
-            echo "Allure results directory found."
-            if ls cypress/reports/allure-results/*.json 1> /dev/null
+          if ls cypress/reports/allure-results/*.json 1> /dev/null 2>&1; then
+            echo "Allure results files found:"
+            ls -l cypress/reports/allure-results/*.json
+          else
+            echo "No Allure results found."
+            exit 1
+          fi
+
+      - name: Upload Allure Results
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-results-${{ matrix.browser }}
+          path: cypress/reports/allure-results
+          if-no-files-found: warn
+          compression-level: 6
+          overwrite: false
+          include-hidden-files: false
+
+      - name: Archive Allure Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-report-${{ matrix.browser }}
+          path: cypress/reports/allure-report
+
+      - name: Archive MochaAwesome Reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: mochawesome-report-${{ matrix.browser }}
+          path: cypress/reports/mochawesome
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
